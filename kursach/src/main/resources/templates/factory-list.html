@@ -5,6 +5,9 @@
     <title>Factory</title>
 </head>
 <body>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Выход"></input>
+</form>
 <div th:switch="${factories}">
     <h2 th:case="null">No factory found!</h2>
     <div th:case="*">
