@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Create factory</title>
+</head>
+<body>
+<form action="#" th:action="@{/factory-create}" th:object="${factory}" method="post">
+    <label for="name">Name</label>
+    <input type="text" th:field="*{name}" id="name" placeholder="Name">
+    <label for="workers">Workers</label>
+    <input type="number" th:field="*{workers}" id="workers" placeholder="Workers">
+    <label for="owner">Owner</label>
+    <input type="text" th:field="*{owner}" id="owner" placeholder="Owner">
+<input type="submit" value="Create Factory">
+
+</form>
+</body>
+</html>
