@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Create sweet</title>
+</head>
+<body>
+<form action="#" th:action="@{/sweet-create}" th:object="${sweet}" method="post">
+  <label for="name">Name</label>
+  <input type="text" th:field="*{name}" id="name" placeholder="Name">
+  <label for="type">Type</label>
+  <input type="text" th:field="*{type}" id="type" placeholder="Type">
+  <label for="price">Price</label>
+  <input type="number" th:field="*{price}" id="price" placeholder="Price">
+  <label for="weight">Weight</label>
+  <input type="number" th:field="*{weight}" id="weight" placeholder="Weight">
+  <input type="submit" value="Create Sweet">
+</form>
+</body>
+</html>

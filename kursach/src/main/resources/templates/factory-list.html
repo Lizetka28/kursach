@@ -35,5 +35,35 @@
     </div>
     <p><a href="/factory-create">Create factory</a></p>
 </div>
+<div th:switch="${sweets}">
+    <h2 th:case="null">No sweet found!</h2>
+    <div th:case="*">
+        <h2>Sweet</h2>
+        <table>
+            <thread>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Price</th>
+                    <th>Weight</th>
+                </tr>
+            </thread>
+            <tbody>
+            <tr th:each="sweet : ${sweets}">
+                <td th:text="${sweet.id}"></td>
+                <td th:text="${sweet.name}"></td>
+                <td th:text="${sweet.type}"></td>
+                <td th:text="${sweet.price}"></td>
+                <td th:text="${sweet.weight}"></td>
+                <td ><a th:href="@{sweet-update/{id}(id=${sweet.id})}">Edit</a></td>
+                <td ><a th:href="@{sweet-delete/{id}(id=${sweet.id})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/sweet-create">Create sweet</a></p>
+</div>
+
 </body>
 </html>
