@@ -8,6 +8,9 @@
 <form th:action="@{/logout}" method="post">
     <input type="submit" value="Выход"></input>
 </form>
+<div th:if="${user.isAdmin()}">
+    <a href="/admin">Панель администратора</a>
+</div>
 <div th:switch="${factories}">
     <h2 th:case="null">No factory found!</h2>
     <div th:case="*">
