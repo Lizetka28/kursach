@@ -19,4 +19,6 @@ public class Sweet {
     private double price;
     @Column(name="weight")
     private int weight;
+    @Column(name="factory")
+    private String factory;
 }

@@ -30,5 +30,6 @@
         <h3>Пользователей нет</h3>
     </#list>
 </table>
+<p ><a href="/factories">Главная</a></p>
 </body>
 </html>

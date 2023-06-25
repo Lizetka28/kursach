@@ -50,6 +50,7 @@
                     <th>Type</th>
                     <th>Price</th>
                     <th>Weight</th>
+                    <th>Factory</th>
                 </tr>
             </thread>
             <tbody>
@@ -59,6 +60,7 @@
                 <td th:text="${sweet.type}"></td>
                 <td th:text="${sweet.price}"></td>
                 <td th:text="${sweet.weight}"></td>
+                <td th:text="${sweet.factory}"></td>
                 <td th:if="${user.isAdmin()}"><a th:href="@{sweet-update/{id}(id=${sweet.id})}">Edit</a></td>
                 <td th:if="${user.isAdmin()}"><a th:href="@{sweet-delete/{id}(id=${sweet.id})}">Delete</a></td>
             </tr>
