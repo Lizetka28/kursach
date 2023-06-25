@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
-    @GetMapping("/start")
+    @GetMapping("/")
     public String start() {
         return "start";
     }
