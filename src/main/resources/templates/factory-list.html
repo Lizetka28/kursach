@@ -59,9 +59,9 @@ h1{
                         <td bgcolor=#F3BEE1  th:text="${factory.name}"></td>
                         <td bgcolor=#F3BEE1  th:text="${factory.workers}"></td>
                         <td bgcolor=#F3BEE1  th:text="${factory.owner}"></td>
-                        <td th:if="${user.isAdmin()}">
+                        <td  bgcolor=#F3BEE1 th:if="${user.isAdmin()}">
                             <a th:href="@{factory-update/{id}(id=${factory.id})}">Edit</a></td>
-                        <td th:if="${user.isAdmin()}">
+                        <td bgcolor=#F3BEE1 th:if="${user.isAdmin()}">
                             <a th:href="@{factory-delete/{id}(id=${factory.id})}">Delete</a></td>
                     </tr>
                     </tbody>
@@ -85,9 +85,9 @@ h1{
                         <td bgcolor=#F3BEE1 th:text="${sweet.type}"></td>
                         <td bgcolor=#F3BEE1 th:text="${sweet.price}"></td>
                         <td bgcolor=#F3BEE1 th:text="${sweet.weight}"></td>
-                        <td bgcolor=#F3BEE1 th:text="${sweet.factory}"></td>
-                        <td th:if="${user.isAdmin()}"><a th:href="@{sweet-update/{id}(id=${sweet.id})}">Edit</a></td>
-                        <td th:if="${user.isAdmin()}"><a th:href="@{sweet-delete/{id}(id=${sweet.id})}">Delete</a></td>
+                        <td bgcolor=#F3BEE1 th:text="${sweet.factory.getName()}"></td>
+                        <td bgcolor=#F3BEE1 th:if="${user.isAdmin()}"><a th:href="@{sweet-update/{id}(id=${sweet.id})}">Edit</a></td>
+                        <td bgcolor=#F3BEE1 th:if="${user.isAdmin()}"><a th:href="@{sweet-delete/{id}(id=${sweet.id})}">Delete</a></td>
                     </tr>
                     </tbody>
                 </table>
@@ -152,7 +152,7 @@ h1{
                             <td  bgcolor=#F3BEE1 th:text="${sweet.type}"></td>
                             <td  bgcolor=#F3BEE1 th:text="${sweet.price}"></td>
                             <td  bgcolor=#F3BEE1 th:text="${sweet.weight}"></td>
-                            <td  bgcolor=#F3BEE1 th:text="${sweet.factory}"></td>
+                            <td  bgcolor=#F3BEE1 th:text="${sweet.factory.getName()}"></td>
                             <td  bgcolor=#F3BEE1 th:if="${user.isAdmin()}"><a th:href="@{sweet-update/{id}(id=${sweet.id})}">Edit</a></td>
                             <td  bgcolor=#F3BEE1 th:if="${user.isAdmin()}"><a th:href="@{sweet-delete/{id}(id=${sweet.id})}">Delete</a></td>
                         </tr>

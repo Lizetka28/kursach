@@ -1,6 +1,7 @@
 package com.example.kursach.servise;
 
 
+import com.example.kursach.model.Factory;
 import com.example.kursach.model.Sweet;
 import com.example.kursach.repository.SweetRepository;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,8 @@ public class SweetService {
     public List<Sweet> findAll(){
         return sweetRepository.findAll();
     }
-    public Sweet saveSweet(Sweet sweet){
+    public Sweet saveSweet(Sweet sweet, Factory factory){
+        sweet.setFactory(factory);
         return sweetRepository.save(sweet);
     }
     public void deleteById(Long id){

@@ -3,6 +3,8 @@ package com.example.kursach.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -17,5 +19,6 @@ public class Factory {
     private int workers;
     @Column(name="owner")
     private String owner;
-
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "factory")
+    private List<Sweet> sweets=new ArrayList<>();
 }

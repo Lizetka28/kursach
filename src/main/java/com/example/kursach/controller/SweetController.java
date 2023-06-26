@@ -1,19 +1,24 @@
 package com.example.kursach.controller;
 
 
+import com.example.kursach.model.Factory;
 import com.example.kursach.model.Sweet;
+import com.example.kursach.servise.FactoryService;
 import com.example.kursach.servise.SweetService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class SweetController {
     private SweetService sweetService;
-    public SweetController(SweetService sweetService){
+    private FactoryService factoryService;
+    public SweetController(FactoryService factoryService,SweetService sweetService){
         this.sweetService=sweetService;
+        this.factoryService=factoryService;
     }
 
     @GetMapping("/sweet-create")
@@ -21,8 +26,9 @@ public class SweetController {
         return "sweet-create";
     }
     @PostMapping("/sweet-create")
-    public String createSweet(Sweet sweet){
-        sweetService.saveSweet(sweet);
+    public String createSweet(@RequestParam( name="factory", required =true) Long id,Sweet sweet){
+        Factory factory=factoryService.findById(id);
+        sweetService.saveSweet(sweet, factory);
         return "redirect:/factories";
     }
     @GetMapping("sweet-delete/{id}")
@@ -37,8 +43,9 @@ public class SweetController {
         return "/sweet-update";
     }
     @PostMapping("/sweet-update")
-    public String updateSweet(Sweet sweet){
-        sweetService.saveSweet(sweet);
+    public String updateSweet(@RequestParam( name="factory", required =true) Long id, Sweet sweet){
+        Factory factory=factoryService.findById(id);
+        sweetService.saveSweet(sweet, factory);
         return "redirect:/factories";
     }
 }

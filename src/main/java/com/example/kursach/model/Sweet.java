@@ -19,6 +19,7 @@ public class Sweet {
     private double price;
     @Column(name="weight")
     private int weight;
-    @Column(name="factory")
-    private String factory;
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+    @JoinColumn
+    private Factory factory;
 }
