@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
 import java.util.List;
@@ -26,9 +27,11 @@ public class FactoryController {
         this.userService=userService;
     }
     @GetMapping("/factories")
-    public String findAll(Model model, Principal principal){
+    public String findAll(@RequestParam( name="name", required = false) String name, @RequestParam( name="name", required = false) String name2, Model model, Principal principal){
         List<Factory> factories=factoryService.findAll();
         model.addAttribute("factories",factories);
+        model.addAttribute("factories2", factoryService.listFactory(name));
+        model.addAttribute("sweets2", sweetService.listSweet(name2));
         List<Sweet> sweets=sweetService.findAll();
         model.addAttribute("sweets",sweets);
         User user = userService.getUserByPrincipal(principal);

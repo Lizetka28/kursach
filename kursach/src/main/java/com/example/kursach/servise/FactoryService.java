@@ -24,5 +24,9 @@ public class FactoryService {
     public void deleteById(Long id){
         factoryRepository.deleteById(id);
     }
+    public List<Factory> listFactory(String name){
+        List<Factory> factories=factoryRepository.findByName(name);
+        return factories;
+    }
 
 }

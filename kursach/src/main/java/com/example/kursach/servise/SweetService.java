@@ -25,5 +25,9 @@ public class SweetService {
     public void deleteById(Long id){
         sweetRepository.deleteById(id);
     }
+    public List<Sweet> listSweet(String name){
+        List<Sweet> sweets=sweetRepository.findByName(name);
+        return sweets;
+    }
 
 }
