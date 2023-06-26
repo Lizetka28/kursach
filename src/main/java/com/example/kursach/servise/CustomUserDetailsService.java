@@ -13,7 +13,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     private final UserRepository userRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {//поиск пользователя по логину(почте) в бд
         return userRepository.findByEmail(email);
     }
 }

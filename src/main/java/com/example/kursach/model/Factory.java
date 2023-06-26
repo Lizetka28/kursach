@@ -19,6 +19,6 @@ public class Factory {
     private int workers;
     @Column(name="owner")
     private String owner;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "factory")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "factory")//связь с таблицей конфет по принципу " на одной фабрике могут производиться разные конфеты"
     private List<Sweet> sweets=new ArrayList<>();
 }

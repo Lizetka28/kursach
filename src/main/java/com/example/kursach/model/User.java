@@ -18,7 +18,7 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    @Column(name = "email", unique = true)
+    @Column(name = "email", unique = true)//почты в бд не могут повторяться, т.к это будт логином
     private String email;
     @Column(name = "name")
     private String name;
@@ -28,15 +28,16 @@ public class User implements UserDetails {
     @Column(name = "password", length = 1000)
     private String password;
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
-    @CollectionTable(name = "user_role",
-            joinColumns = @JoinColumn(name = "user_id"))
+    @CollectionTable(name = "user_role",//создание таблицы связи роли и пользователя
+            joinColumns = @JoinColumn(name = "user_id"))//связь с таблицей пользователей посредством внешнего ключа
     @Enumerated(EnumType.STRING)
     private Set<Role> roles = new HashSet<>();
 
     public boolean isAdmin() {
         return roles.contains(Role.ROLE_ADMIN);
-    }
+    }//проверка пользователя на роль админа
 
+    //преопределение методов UserDetails
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles;

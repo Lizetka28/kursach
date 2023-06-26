@@ -19,7 +19,7 @@ public class Sweet {
     private double price;
     @Column(name="weight")
     private int weight;
-    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)//связь с таблицей фабрик по принципу " на одной фабрике могут производиться разные конфеты"
     @JoinColumn
     private Factory factory;
 }

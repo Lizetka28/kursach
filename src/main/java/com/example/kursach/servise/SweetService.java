@@ -16,18 +16,18 @@ public class SweetService {
     }
     public Sweet findById(Long id){
         return sweetRepository.findById(id).orElse(null);
-    }
+    }// поиск конфет по id в бд
     public List<Sweet> findAll(){
         return sweetRepository.findAll();
-    }
-    public Sweet saveSweet(Sweet sweet, Factory factory){
+    }//поиск всех конфет в бд
+    public Sweet saveSweet(Sweet sweet, Factory factory){//добавлние конфет в бд
         sweet.setFactory(factory);
         return sweetRepository.save(sweet);
     }
     public void deleteById(Long id){
         sweetRepository.deleteById(id);
-    }
-    public List<Sweet> listSweet(String name){
+    }//удаление конфет с заданным id из бд
+    public List<Sweet> listSweet(String name){//поиск конфет с заданным названием в бд
         List<Sweet> sweets=sweetRepository.findByName(name);
         return sweets;
     }

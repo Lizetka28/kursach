@@ -26,7 +26,7 @@ public class FactoryController {
         this.sweetService= sweetService;
         this.userService=userService;
     }
-    @GetMapping("/factories")
+    @GetMapping("/factories")//возвращает главную страницу, может принимать названия фабрик/конфет и искать их в бд, выводит данные о фабриках и конфетах из бд
     public String findAll(@RequestParam( name="name", required = false) String name, @RequestParam( name="name", required = false) String name2, Model model, Principal principal){
         List<Factory> factories=factoryService.findAll();
         model.addAttribute("factories",factories);
@@ -38,27 +38,27 @@ public class FactoryController {
         model.addAttribute("user",user);
         return "factory-list";
     }
-    @GetMapping("/factory-create")
+    @GetMapping("/factory-create")//возвращает страницу создания фабрики
     public String createFactoryForm(Factory factory){
         return "factory-create";
     }
-    @PostMapping("/factory-create")
+    @PostMapping("/factory-create")//принимает из формы данные о фабрике и создает ее в бд, возвращает на главную страницу
     public String createFactory(Factory factory){
         factoryService.saveFactory(factory);
         return "redirect:/factories";
     }
-    @GetMapping("factory-delete/{id}")
+    @GetMapping("factory-delete/{id}")//принимает id фабрики, удаляет её из бд и возвращает главную страницу
     public String deleteFactory(@PathVariable("id") Long id){
         factoryService.deleteById(id);
         return "redirect:/factories";
     }
-    @GetMapping("factory-update/{id}")
+    @GetMapping("factory-update/{id}")//принимает id фабрики, возвращает страницу изменения фабрики, где выведены ее характеристики
     public String updateFactoryForm(@PathVariable("id") Long id,Model model){
         Factory factory=factoryService.findById(id);
         model.addAttribute("factory",factory);
         return "/factory-update";
     }
-    @PostMapping("/factory-update")
+    @PostMapping("/factory-update")//принимает из формы данные о фабрике, изменяет ее в бд и возвращает главную страницу
     public String updateFactory(Factory factory){
         factoryService.saveFactory(factory);
         return "redirect:/factories";
